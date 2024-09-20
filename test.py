@@ -17,18 +17,23 @@ def normalize_data(data):
 def main():
 
     #read excel file
-    df = pd.read_excel("AI_Brandon_Soils_Selection_Kay_Combined.xlsx")
+    df = pd.read_excel("##################################")
+    
     #pull mineralization values
     min = df.iloc[:, 1].tolist()
     mineralization= np.array(min)
+    
     #remove unneeded columns
     columns_to_remove_indices = [0, 1, 2, 3, 4, 5, 6, 7]
     columns_to_remove = [df.columns[i] for i in columns_to_remove_indices]
+    
     # Drop specified columns from the DataFrame
     df = df.drop(columns=columns_to_remove)
+    
     # Convert the DataFrame to a list of lists
     data = df.values.tolist()
     data1 = np.array(data)
+    
     #set all negative values to zero
     data1[data1 < 0] = 0
     data_array = normalize_data(data1)
